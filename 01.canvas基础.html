@@ -66,7 +66,8 @@
 
     //画圆弧
     ctx.beginPath();
-    ctx.translate(50,50);//修改中心点
+    //修改中心点
+    ctx.translate(50,50);
     ctx.moveTo(200,100);
     ctx.lineTo(270,100); //这里的y坐标要和arcTo方法里的起始坐标y2一样
     ctx.arcTo(300,100,300,150,80);//起始坐标x1,y1  结束坐标x2,y2  半径
