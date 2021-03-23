@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas{
+            background-color: rgb(151, 161, 161);
+        }
+    </style>
+</head>
+<body>
+    <!-- 默认大小是 300*150 -->
+    <canvas id="canvas" width="600" height="600">浏览器不支持</canvas>
+</body>
+<script>
+    let canvas = document.querySelector('#canvas');
+    let ctx = canvas.getContext('2d'); //2d图形
+    // 3d图形：gl = canvas.getContext("webgl")
+
+   /*  ctx.fillStyle = 'pink'; //填充的颜色
+    ctx.fillRect(100,100,100,150); //填充：x坐标 y左边 宽 高 */
+
+    /* ctx.strokeStyle = 'orange';
+    ctx.strokeRect(0,0,60,60); //描边：x坐标 y左边 宽 高 */
+
+    /* ctx.rect(20,20,200,180);//设计创建一个图形
+    ctx.fillStyle = 'blue';
+    ctx.fill();//画一个填充图形 */
+
+   /*  ctx.rect(20,20,200,180);//设计创建一个图形
+    ctx.strokeStyle = 'blue';
+    ctx.stroke();//画一个描边图形 */
+
+    ctx.beginPath();//开始新路径
+    ctx.moveTo(40,40); //下笔的位置，初始位置
+    ctx.lineTo(100,100);//停笔的位置
+    // ctx.fill(); //这个没有效果
+    ctx.stroke();//画到画布
+
+    ctx.beginPath();//开始新路径
+    ctx.moveTo(40,150); //下笔的位置，初始位置
+    ctx.lineTo(200,200);//停笔的位置
+    ctx.lineWidth = 10; //画笔宽度
+    ctx.strokeStyle = 'red'; //画笔颜色
+    ctx.stroke();//画到画布
+
+   /*  //画一个矩形
+    ctx.beginPath();
+    ctx.moveTo(300,300);
+    ctx.lineTo(400,300);
+    ctx.lineTo(400,400);
+    ctx.lineTo(300,400);
+    ctx.closePath();//回到起始位置
+    ctx.stroke(); //描边
+    // ctx.fill(); //填充 */
+
+    //画圆
+    ctx.beginPath();
+    ctx.strokeStyle = 'yellow';
+    ctx.lineWidth = 1;
+    ctx.arc(300,300,50,Math.PI/2,Math.PI*2);//x y 半径r 起始角度e 结束角度 true为逆时针，默认为false
+    ctx.stroke();
+
+    //画圆弧
+    ctx.beginPath();
+    ctx.translate(50,50);//修改中心点
+    ctx.moveTo(200,100);
+    ctx.lineTo(270,100); //这里的y坐标要和arcTo方法里的起始坐标y2一样
+    ctx.arcTo(300,100,300,150,80);//起始坐标x1,y1  结束坐标x2,y2  半径
+    ctx.lineTo(300,500);
+    ctx.stroke();
+
+    
+</script>
+</html>
