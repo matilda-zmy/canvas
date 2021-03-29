@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="600" height="400"></canvas>
+</body>
+</html>
+<script>
+    class BarChart{
+        constructor(id){
+            this.canvas = document.querySelector('canvas');
+            // 创建绘画环境
+            this.ctx = this.canvas.getContext('2d');
+            this.setRatio();
+            this.cPadding = 80;  // 内边距
+            this.yAxisHeight = this.canvas.height - this.cPadding * 2;  //柱状图Y轴的高度
+            this.xAxisWidth = this.canvas.width - this.cPadding * 2;  //柱状图X轴的宽度
+            this.originX = this.cPadding; //0点的横坐标
+            this.originY = this.yAxisHeight + this.cPadding; //0点的纵坐标
+            this.yAxisQuantity = 10; //纵坐标分的段数
+            this.xAxisQuantity = 0; //横坐标分的段数
+            this.data = []; //存储 传进来的数据
+
+            this.count = 0; //用于实现逐步形成柱状图的变量
+        }
+        init(){
+            this.ctx.font = '15px Arial'; //统一设置字体大小
+            // 1.画坐标系--drawAxis
+            this.drawAxis();
+            this.bindEvent(); //绑定点击事件
+        }
+        // 设置数据
+        setData(ary){
+            this.data = ary;
+            this.xAxisQuantity = ary.length;
+            this.init();
+        }
+        // 设置像素比 -->解决线模糊的问题
+        setRatio(){
+            let device = window.devicePixelRatio || 1; //获取屏幕设备像素
+            let canvasDevice = this.canvas.backingStorePixelRatio || 1; //获取画布像素
+            let ratio = device / canvasDevice; // 获取像素比值
+            let oldWidth = this.canvas.width, //画布旧宽
+                oldHeight = this.canvas.height; //画布旧高
+            this.canvas.width = oldWidth * ratio; //算出新画布宽
+            this.canvas.height = oldHeight * ratio;
+            this.canvas.style.width = oldWidth + 'px';
+            this.canvas.style.height = oldHeight + 'px';
+        }
+        // 画线
+        drawLine(x,y,x2,y2){  //xy 对应起始坐标，x2y2对应结束坐标
+            this.ctx.beginPath();
+            this.ctx.lineWidth = 1;
+            this.ctx.moveTo(x,y);
+            this.ctx.lineTo(x2,y2);
+            this.ctx.stroke();
+            this.ctx.closePath(); //它尝试从当前点到起始点绘制一条直线。 如果图形已经是封闭的或者只有一个点，那么此方法不会做任何操作
+        }
+        // 画坐标系
+        drawAxis(){
+            this.ctx.translate(0.5,0.5); //把canvas的原点移到 0.5,0.5的位置 -->解决线模糊的问题
+            this.ctx.strokeStyle = '#333';
+            // 画Y轴
+            this.drawLine(this.originX, this.originY, this.originX, this.cPadding);
+            // 画Y轴
+            this.drawLine(this.originX, this.originY, this.originX + this.xAxisWidth, this.originY);
+            // 画刻度
+            this.drawMarker();
+            // 画柱状图
+            this.drawBar();
+            this.ctx.translate(-0.5,-0.5);
+        }
+        // 画刻度
+        drawMarker(){
+            // Y轴
+            let oneYValue = this.yAxisHeight / this.yAxisQuantity;
+            this.ctx.textAlign = 'right'; //文字右对齐
+            for(let i = 0; i<=this.yAxisQuantity; i++){
+                // 写字
+                this.ctx.fillText(i * 100, this.originX -10, this.originY - i * oneYValue + 2);
+                // 刻度
+                if(i > 0){ //原点不需要画
+                    this.ctx.strokeStyle = '#333';
+                    this.drawLine(this.originX, this.originY - i * oneYValue, this.originX - 5, this.originY - i * oneYValue)
+                // 画辅助线
+                    this.ctx.strokeStyle = '#eee';
+                    this.drawLine(this.originX,this.originY - i * oneYValue,this.canvas.width - this.cPadding,this.originY - i * oneYValue)
+                }
+            }
+            // Y轴标题
+            this.ctx.save();
+            this.ctx.rotate(-Math.PI/2); //旋转画布，因为标签是反着的
+            this.ctx.fillText('产量', -this.canvas.height/2 ,20);
+            this.ctx.restore();
+
+            // X轴
+            let oneXValue = this.xAxisWidth / this.xAxisQuantity;
+            this.ctx.textAlign = 'center'; 
+            this.ctx.strokeStyle = '#333';
+            for(let i = 0; i < this.xAxisQuantity; i++){
+                this.ctx.fillText(this.data[i][0], this.originX+(i+1)*oneXValue-(oneXValue/2), this.originY + 20);
+                this.drawLine(this.originX + (i+1) * oneXValue, this.originY, this.originX + (i+1) * oneXValue, this.originY + 5)
+            }
+            // X轴标题
+            this.ctx.font = '20px Arial'
+            this.ctx.fillText('年份',this.canvas.width/2, this.originY + 55)
+        }
+        drawRect(x,y,w,h){
+            this.ctx.beginPath();
+            this.ctx.rect(x,y,w,h); //画矩形
+            let color = this.ctx.createLinearGradient(0,0,0,500); //给矩形加渐变色
+            color.addColorStop(0,'green');
+            color.addColorStop(0.5,'#1E90FF');
+            color.addColorStop(1,'#00008B');
+            this.ctx.fillStyle = color;
+            this.ctx.fillStyle = color;
+            this.ctx.fill(); //填充矩形
+            this.ctx.closePath();
+        }
+        // 画柱状图
+        drawBar(){
+            let oneVal = this.xAxisWidth / this.xAxisQuantity;
+            let barWidth = oneVal / 2; //柱状图宽
+            this.ctx.font = '15px Arial';
+            for(let i = 0; i < this.xAxisQuantity; i++){
+                let barHeight = this.data[i][1] * this.yAxisHeight / 1000 * (this.count/100); //柱状图高
+                let y = this.originY - barHeight; //柱状图纵坐标
+                let x = this.originX + i * oneVal + barWidth/2; //柱状图横坐标
+                this.drawRect(x,y,barWidth,barHeight);
+                this.ctx.fillStyle = 'black';
+                this.ctx.fillText(this.data[i][1], x+barWidth/2, y-10); 
+            }
+            this.animateID =  requestAnimationFrame(this.animate.bind(this));
+        }
+        // 柱状图逐步形成
+        animate(){
+            this.count++;
+            if(this.count <= 100){
+                this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height); //清空画布
+                this.drawAxis(); //重新画上去
+            }else{
+                this.count = 100;
+            }
+        }
+
+        bindEvent(){ //点击画布也会重新生成
+            this.canvas.addEventListener('click',() => {
+                window.cancelAnimationFrame(this.animateID);
+                this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height); //清空画布
+                this.count = 0;
+                this.setData(this.data);
+            })
+
+        }
+    }
+
+    let bar = new BarChart('canvas');
+    let data = [[2007,750], [2008,425], [2009,960], [2010,700], [2011,800], [2012,975], [2013,375], [2014,775]];
+    bar.setData(data);
+</script>
