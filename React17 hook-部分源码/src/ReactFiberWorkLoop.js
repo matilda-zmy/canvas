@@ -1,0 +1,22 @@
+
+
+import {beginWork} from './ReactFiberBeginWork';
+let workInProgress = null;
+//每一个fiber都是一个工作单元
+function performUnitOfWork(unitOfWork){
+    let current = unitOfWork.alternate;
+    return beginWork(current,unitOfWork);
+}
+function workLoop(){
+    //每个fiber是一个工作单元，每完成一个fiber,会看看有没有剩余时间，如果有接着干下一个，如果没有就
+    //退出循环
+    while (workInProgress !== null) {
+        workInProgress = performUnitOfWork(workInProgress);
+    }
+}
+//正常来说我们需要根节点一下向下构建，Counter
+
+export function render(fiber){
+    workInProgress = fiber;
+    workLoop();
+}
