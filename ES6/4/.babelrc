@@ -1,0 +1,11 @@
+// babel的配置文件，可以自己自动调用
+
+{
+    "presets":[ //预设包
+        "@babel/preset-env"
+    ],
+    "plugins": [
+        ["@babel/plugin-proposal-decorators",{"legacy": true}],
+        ["@babel/plugin-proposal-class-properties",{"loose": true}]
+    ]
+}
