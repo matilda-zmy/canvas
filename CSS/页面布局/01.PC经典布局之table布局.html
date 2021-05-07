@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table布局</title>
+</head>
+<style>
+    table{
+        border-collapse: collapse; 
+    }
+    th,td{
+        padding: 10px;
+    }
+    td{
+        text-align: center;
+    }
+
+    ul{
+        display: table;
+    }
+    li{
+        display: table-cell;
+        list-style: none;
+        width: 80px;
+        text-align: center;
+    }
+</style>
+<body>
+<!-- 
+    table2种用法：table HTML元素 / table-CSS布局 
+        1.table HTML元素缺点：不易重构，且默认横向排列
+            caption 表格标题
+            tr 行
+            td 列
+            th 也是列，但是自带加粗和居中的功能
+            border="1"  表格边框为1px，但是表格会有间隙
+            border-collapse: collapse;  取消表格自带的间距
+        2.table-CSS布局：div+CSS 复用和重构比较方便
+            list-style: none;  取消列表的默认样式
+            display: table-cell;   让列表横向排列，相当于表格的td
+            display: table;  把ul转化成单元表格，等同于table标签
+
+-->
+
+<!-- 完整版table -->
+    <table>
+        <thead>
+            <tr>
+                <td>互联网</td>
+                <td>人工智能</td>
+                <td>85</td>
+                <td>小路</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>互联网</td>
+                <td>人工智能</td>
+                <td>85</td>
+                <td>小路</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>互联网</td>
+                <td>人工智能</td>
+                <td>85</td>
+                <td>小路</td>
+            </tr>
+        </tfoot>
+    </table>
+<!-- 简易版table -->
+    <caption>信息统计</caption>
+    <table border="1">
+        <tr>
+            <th>种类</th>
+            <th>科目</th>
+            <th>分数</th>
+            <th>姓名</th>
+        </tr>
+        <tr>
+            <td>互联网</td>
+            <td>人工智能</td>
+            <td>85</td>
+            <td>小路</td>
+        </tr>
+        <tr>
+            <td>互联网</td>
+            <td>人工智能</td>
+            <td>85</td>
+            <td>小路</td>
+        </tr>
+        <tr>
+            <td>互联网</td>
+            <td>人工智能</td>
+            <td>85</td>
+            <td>小路</td>
+        </tr>
+    </table>
+
+    <div class="table">
+        <ul>
+            <li>种类</li>
+            <li>科目</li>
+            <li>分数</li>
+            <li>姓名</li>
+        </ul>
+    </div>
+</body>
+</html>
