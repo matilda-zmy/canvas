@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>三列布局3- table+table-cell</title>
+</head>
+<style>
+ 
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  #left{
+    width: 200px;
+    height: 400px;
+    background-color: saddlebrown;
+  }
+  #center{
+    width: 200px;
+    height: 400px;
+    background-color: royalblue;
+  }
+  #right{
+    height: 500px;
+    background-color: cadetblue;
+  }
+
+ /* 左中 定宽   右自适应 */
+ /* table-cell => td 水平排列  等高 */
+ #parent{
+   display: table;
+   width: 100%;
+ }
+  #left,#center,#right{
+    display: table-cell;
+  }
+  
+/* BFC--BFC特点的元素不会和浮动元素重叠 */
+
+  /* 左右 定宽   中间自适应 
+  就左右浮动，中间写 overflow: hidden;
+  */
+  
+</style>
+<body>
+  <div id="parent">
+    <div id="left"></div>
+    <div id="center"></div>
+    <div id="right"></div>
+  </div>
+</body>
+</html>

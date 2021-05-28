@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>双飞翼布局</title>
+  <style>
+    /* 两边定宽 中间自适应  并且让中间部分优先加载，所以中间部分要放最上面*/
+    #left{width: 200px; height: 500px; background-color: cadetblue;}
+    #right{width: 200px; height: 500px; background-color: blueviolet;}
+    #center{width: 100%; }
+
+    /* 第1步： float 让三个容器水平排列 */
+    #left,#right,#center{
+      float: left;
+    }
+
+    /* 第2步：
+      给中间容器的子容器设置margin外间距 -- 这样把 left 和 right 的位置留出来
+     */
+    #inner{
+      height: 500px; 
+      background-color: navajowhite;
+      margin: 0 200px;
+    }
+
+    /* 第3步：把left移到原来的位置 -- left 原来是在 center(100%) 的前面
+              把right移到原来的位置 -- right 原来是在 center(100%) 的后面
+        技巧：margin负值  -- 移动
+     */
+     #left{
+       margin-left: -100%;
+     }
+     #right{
+       margin-left: -200px;
+     }
+
+     /* 总结：
+      双飞翼把圣杯的定位位移的属性给优化掉了
+      */
+    
+  </style>
+</head>
+<body>
+  <div id="parent">
+    <div id="center">
+      <div id="inner">中间</div>
+    </div>
+    <div id="left">左边</div>
+    <div id="right">右边</div>
+  </div>
+</body>
+</html>

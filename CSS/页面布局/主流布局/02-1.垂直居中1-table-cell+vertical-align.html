@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>垂直居中1- table-cell+vertical-align</title>
+</head>
+<style>
+  /* 缺点：vertical-align属性会导致父元素的文本也是居中显示的 */
+  *{
+    padding: 0;
+    margin: 0;
+  }
+  #parent{
+    width: 500px;
+    height: 500px;
+    background-color: darkseagreen;
+    display: table-cell;
+    vertical-align: middle;
+  }
+  #child{
+    text-align: center;
+  }
+
+</style>
+<body>
+  <!-- 定义父元素 -->
+  <div id="parent">
+    <!-- 定义子元素 -->
+    <div id="child">居中布局-table-cell+vertical-align</div>
+  </div>
+</body>
+</html>

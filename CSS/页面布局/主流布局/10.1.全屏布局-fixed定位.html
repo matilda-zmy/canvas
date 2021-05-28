@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全屏布局--固定定位</title>
+</head>
+<style>
+  /* 定位 同时设置方位 */
+  *{margin: 0; padding: 0;}
+  /* width: 100%; = left:0; right:0; */
+  header,footer{
+    width: 100%;
+    height: 80px;
+    background-color: olive;
+  }
+  li{
+    list-style: none;
+  }
+  /* 头尾固定 */
+  header{position: fixed;top: 0;}
+  footer{position: fixed;bottom: 0;}
+  /* left: 0; right: 0; top: 80px; bottom: 80px; = width: 100%; height:100%; top:100%-80px; bottom:100%-80px */
+  .content{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 80px;
+    bottom: 80px;
+    background-color: lemonchiffon;
+  }
+  .left{
+    width: 80px;
+    height: 100%;
+    /* 滚动起来 */
+    overflow-y: auto;
+    float: left;
+  }
+  .right{
+    height: 100%;
+    /* 滚动起来 */
+    overflow-y: auto;
+    font-size: 30px;
+  }
+</style>
+<body>
+  <header></header>
+  <div class="content">
+    <div class="left">
+      <ul>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+        <li>活动发布</li>
+      </ul>
+    </div>
+    <div class="right">
+      <ul>
+        <li>航空领域辐射大发啊发发</li>
+        <li>航空领域辐射大发啊发发</li>
+        <li>航空领域辐射大发啊发发</li>
+        <li>航空领域辐射大发啊发发</li>
+        <li>航空领域辐射大发啊发发</li>
+        <li>航空领域辐射大发啊发发</li>
+        <li>航空领域辐射大发啊发发</li>
+        <li>航空领域辐射大发啊发发</li>
+        <li>航空领域辐射大发啊发发</li>
+        <li>航空领域辐射大发啊发发</li>
+        <li>航空领域辐射大发啊发发</li>
+        <li>航空领域辐射大发啊发发</li>
+        <li>航空领域辐射大发啊发发</li>
+        <li>航空领域辐射大发啊发发</li>
+        <li>航空领域辐射大发啊发发</li>
+        <li>航空领域辐射大发啊发发</li>
+        <li>航空领域辐射大发啊发发</li>
+        <li>航空领域辐射大发啊发发</li>
+        <li>航空领域辐射大发啊发发</li>
+        <li>航空领域辐射大发啊发发</li>
+      </ul>
+    </div>
+  </div>
+  <footer></footer>
+</body>
+</html>

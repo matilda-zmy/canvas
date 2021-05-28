@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>两列布局3- float+overflow</title>
+</head>
+<style>
+  *{margin: 0;padding: 0;}
+  /* BFC
+  overflow: hidden => 浮动元素不会和BFC特点的容器进行重叠
+   */
+  #left{
+    width: 200px;
+    height: 400px;
+    background-color: dimgrey;
+    float: left;
+  }
+  #right{
+    height: 600px;
+    background-color: rebeccapurple;
+    overflow: hidden;
+  }
+</style>
+<body>
+  <!-- 左定宽 -->
+  <div id="left"></div>
+  <!-- 右自适应 -->
+  <div id="right">
+  </div>
+</body>
+</html>

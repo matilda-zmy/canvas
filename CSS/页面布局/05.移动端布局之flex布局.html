@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #flex{
+    width: 500px;
+    height: 500px;
+    background-color: slategray;
+
+    /* 转化成弹性盒模型，浮动和定位就会失效 */
+    display: flex;
+     /* 子元素排列方向，默认是水平 */
+    /* flex-direction: column; */
+
+    /* 水平居中 center  space-between  space-around*/
+    justify-content: center;
+
+    /* 垂直居中 */
+    align-items: center;
+
+    
+  }
+  p{
+    flex: 1; /* 让子元素平分父元素的宽度 */
+    /* width: 100px; */
+    height: 100px;
+  }
+  #flex p:nth-child(1){
+    background-color: thistle;
+  }
+  #flex p:nth-child(2){
+    background-color: tomato;
+  }
+  #flex p:nth-child(3){
+    background-color: purple;
+  }
+
+  /* 三排 7列 */
+  ul{
+    display: flex;
+    flex-wrap: wrap; /* 当子元素的宽度不够时，自动换行 */
+  }
+  li{
+    list-style: none;
+    text-align: center;
+    width: 14.285%; /* 100/7*100%  每一列的宽度*/
+  }
+</style>
+<body>
+  <!-- ul>li{新闻}*21 tab键 -->
+  <ul>
+    <li>新闻</li>
+    <li>新闻</li>
+    <li>新闻</li>
+    <li>新闻</li>
+    <li>新闻</li>
+    <li>新闻</li>
+    <li>新闻</li>
+    <li>新闻</li>
+    <li>新闻</li>
+    <li>新闻</li>
+    <li>新闻</li>
+    <li>新闻</li>
+    <li>新闻</li>
+    <li>新闻</li>
+    <li>新闻</li>
+    <li>新闻</li>
+    <li>新闻</li>
+    <li>新闻</li>
+    <li>新闻</li>
+    <li>新闻</li>
+    <li>新闻</li>
+  </ul>
+  <div id="flex">
+    <p>child 1</p>
+    <p>child 2</p>
+    <p>child 3</p>
+  </div>
+</body>
+</html>

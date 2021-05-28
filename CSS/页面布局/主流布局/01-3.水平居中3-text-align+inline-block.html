@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>水平居中3- text-align+inline-block</title>
+</head>
+<style>
+  
+  *{
+    padding: 0;
+    margin: 0;
+  }
+/* 多个块居中 text-align+inline-block */
+  #parent{
+    width: 500px;
+    height: 500px;
+    background-color: darkseagreen;
+    text-align: center;
+  }
+  .child{
+    /* 这样就是轮播图小圆点的效果 */
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: darkslateblue;
+    margin: 10px;
+  }
+</style>
+<body>
+  <!-- 定义父元素 -->
+  <div id="parent">
+    <!-- 定义子元素 -->
+    <div class="child">1</div>
+    <div class="child">2</div>
+    <div class="child">3</div>
+  </div>
+</body>
+</html>

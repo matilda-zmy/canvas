@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>等高布局1- table+table-cell</title>
+</head>
+<style>
+  *{margin:0; padding:0;}
+  #left{background-color: lightblue;}
+  #right{background-color: mediumpurple;}
+  #parent{
+    display: table;
+  }
+  
+  /* table-cell布局，自带等分和等高的效果 */
+  #left,#right{
+    display: table-cell;
+  }
+</style>
+<body>
+  <div id="parent">
+    <div id="left">Happiness</div>
+    <div id="right">Every day of your life, it is important to take the time to “smell the roses” — to appreciate the experiences that lead to happiness. This is part of being truly happy.
+
+      Happiness is a state of mind. It starts with accepting where you are, knowing where you are going and planning to enjoy every moment along the way. You know how to be happy, and feel that you have enough time or money or love or whatever you need to achieve your goals. And just feeling that you have enough of everything means that you do indeed have enough.</div>
+  </div>
+</body>
+</html>

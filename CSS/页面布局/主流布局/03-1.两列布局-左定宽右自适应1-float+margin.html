@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>两列布局1- float+margin</title>
+</head>
+<style>
+  *{margin: 0;padding: 0;}
+  /* float 浮动的层叠顺序 > 块级 */
+  #left{
+    width: 200px;
+    height: 400px;
+    background-color: dimgrey;
+    float: left;
+  }
+  #right{
+    height: 600px;
+    background-color: rebeccapurple;
+  }
+  /* 
+  如果是使用浮动，就都要使用；防止没有使用的浮动的那个元素里有子元素，
+  并且子元素还清浮动，这样子元素就会掉到下面去，类似下面代码效果 
+  */
+  /* #inner{
+    width: 300px;
+    height: 300px;
+    background-color: salmon;
+    clear: both;
+  } */
+</style>
+<body>
+  <!-- 左定宽 -->
+  <div id="left"></div>
+  <!-- 右自适应 -->
+  <div id="right">
+    <div id="inner"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>垂直居中2- line-height</title>
+</head>
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+  }
+  #parent{
+    width: 500px;
+    height: 500px;
+    background-color: darkseagreen;
+  }
+  #child{
+    text-align: center;
+    /* 垂直居中：line-height = 高度 */
+    line-height: 500px;
+  }
+
+</style>
+<body>
+  <!-- 定义父元素 -->
+  <div id="parent">
+    <!-- 定义子元素 -->
+    <div id="child">居中布局-table-cell+vertical-align</div>
+  </div>
+</body>
+</html>

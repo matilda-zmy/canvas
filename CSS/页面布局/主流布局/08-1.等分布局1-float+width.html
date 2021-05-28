@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>等分布局1- float+width</title>
+</head>
+<style>
+  .col1{
+    background-color: navajowhite;
+  }
+  .col2{
+    background-color: pink;
+  }
+  .col3{
+    background-color: olive;
+  }
+  .col4{
+    background-color: tomato;
+  }
+  .col5{
+    background-color: brown;
+  }
+  
+  /* float / display:inline-block 这2种方式都可以让元素水平排列
+  盒子模型： width/height/padding/margin/border  
+            box-sizing: border-box/content-box
+  盒模型布局： display:box / flex
+   */
+
+   /* 使用浮动，让元素在同一水平排列 
+    因为是等分，子元素平分父元素的宽度
+  */
+
+  #parent>div{
+    float: left;
+    width: 20%;
+    height: 400px;
+    /* 要让元素之间有间距，然后还不掉到下一行，外间距会掉下去的 */
+    box-sizing: border-box;
+    padding-left: 10px;
+  }
+  .col1,.col2,.col3,.col4,.col5{height: 400px;}
+
+  /* 要让第一个元素左边的距离消失，就把整体往左边移动10px */
+  #parent{
+    margin-left: -10px;
+  }
+
+</style>
+<body>
+  <div id="parent" class="clearfix">
+    <div><div class="col1"></div></div>
+    <div><div class="col2"></div></div>
+    <div><div class="col3"></div></div>
+    <div><div class="col4"></div></div>
+    <div><div class="col5"></div></div>
+  </div>
+</body>
+</html>

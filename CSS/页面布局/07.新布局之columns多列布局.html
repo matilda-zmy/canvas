@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS3多列布局</title>
+</head>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  #parent{
+    /* 
+    column-count: 4;  行数
+    column-width: 400px;  列宽
+    column-gap: 10px;  列间距 => margin
+    column-rule-color  边框线颜色  => border-color
+    column-rule-style  边框线样式  => border-style
+    column-rule-width   边框线大小  => border-width
+    column-rule  分割线  => border
+    column-span  列的合并  =>  table  col-span
+     */
+
+
+    /* 行数：一排放4列，并且宽度和间距自动计算 */
+    /* column-count: 4;  */
+    /* 列的宽度 */
+    column-width: 400px;
+    /* 列的间距 */
+    column-gap: 10px;
+    /* 边框线颜色 宽度 样式 */
+    column-rule-color: teal;
+    column-rule-style: double;
+    column-rule-width: 10px;
+  }
+  #parent>div{
+    /* 这样就不会从中间截断 */
+    -webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
+    page-break-inside: avoid;/* Firefox */
+    break-inside: avoid;/* IE 10+, Chrome, Safari, Opera */
+  }
+  .col1{background-color: hotpink;}
+  .col2{background-color: blueviolet;}
+  .col3{background-color: greenyellow;}
+  .col4{background-color: cornflowerblue;}
+
+  table{
+    border-collapse: collapse;
+  }
+
+  .col1{
+    /* 把所有的列合并成1个大列  独占一排 */
+    column-span: all;
+  }
+
+</style>
+<body>
+  <table border="1">
+    <tr align="center">
+      <!-- 合并列 -->
+      <td colspan="4">标题</td>
+    </tr>
+    <tr>
+      <td>不够</td>
+      <td>就好</td>
+      <td>考虑</td>
+      <td>排列</td>
+    </tr>
+  </table>
+
+
+
+  <div id="parent">
+    <div class="col1">Happiness</div>
+    <div class="col2">Every day of your life, it is important to take the time to “smell the roses” — to appreciate the experiences that lead to happiness. This is part of being truly happy.
+
+      Happiness is a state of mind. It starts with accepting where you are, knowing where you are going and planning to enjoy every moment along the way. You know how to be happy, and feel that you have enough time or money or love or whatever you need to achieve your goals. And just feeling that you have enough of everything means that you do indeed have enough.</div>
+    <div class="col3">You have to choose to be happy, and focus upon being happy, in order to be happy. If you instead focus upon knowing that you will be happy if you achieve something, you will never be happy, as you have not learned to “smell the roses”. The irony is that when you are happy, you are inevitably more productive, and far more likely to achieve what everything-seekers are seeking.</div>
+    <div class="col4">We need to be happy. Allow yourself to choose happiness. If life was perfect, would you be happy? Life is perfect because we create it with our choices. Since we can create life, we can create happiness and choose how much better our lives can get!
+
+      Only when we can accept that life is perfect as it is, and that our lives are the sum total of everything that has happened up to this moment, can we accept the joy and the happiness we deserve.</div>
+  </div>
+</body>
+</html>

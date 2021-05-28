@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>水平居中4-绝对定位position</title>
+</head>
+<style>
+  /* 
+  三种方案
+  position: absolute;
+  left: 50%;
+  +  margin-left: -100px;   负值技巧(适用于已知宽高)   1
+  +  transform: translateX(-50%);    CSS3  兼容性不太好(适用于未知宽高)     2
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;          3
+
+   */
+  #parent{
+    width: 500px;
+    height: 500px;
+    background-color: darkseagreen;
+    position: relative;
+  }
+  #child{
+    width: 200px;
+    height: 200px;
+    background-color: darkslateblue;
+    position: absolute;
+    /* left: 50%; */
+    /* margin-left: -100px; */
+    /* transform: translateX(-50%); */
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+</style>
+<body>
+  <!-- 定义父元素 -->
+  <div id="parent">
+    <!-- 定义子元素 -->
+    <div id="child">居中布局-绝对定位position</div>
+  </div>
+</body>
+</html>

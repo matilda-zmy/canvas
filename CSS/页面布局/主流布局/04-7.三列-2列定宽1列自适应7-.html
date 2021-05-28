@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>左右定宽 中间自适应-四种方法(左中右结构)</title>
+</head>
+<style>
+ 
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  /* float + position + flex + grid
+  calc()
+   */
+  #left{
+    width: 200px;
+    height: 400px;
+    background-color: saddlebrown;
+  }
+  #center{
+    height: 500px;
+    background-color: royalblue;
+  }
+  #right{
+    width: 200px;
+    height: 400px;
+    background-color: cadetblue;
+  }
+  #left{
+    float: left;
+  }
+  #right{
+    float: right;
+  }
+  #center{
+    margin: 0 200px;
+  }
+  #parent{
+    overflow: hidden;
+  }
+
+  
+</style>
+<body>
+  <div id="parent">
+    <div id="left">左</div>
+    <div id="right">右</div>
+    <div id="center">中</div>
+  </div>
+</body>
+</html>

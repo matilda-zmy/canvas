@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>盒子模型</title>
+</head>
+<body>
+  <!-- 
+    1. 盒子模型 -
+      box-sizing:content-box (正常情况)
+      实际宽度 = width + padding-left/right + border-left/right
+      实际高度 = height + padding-top/bottom + border-top/bottom
+
+      所以如果已经给了宽度，再加间距就会挤下来
+
+       box-sizing:border-box (怪异盒模型)
+      实际宽度 = width (padding 和 border 是已经算进去了，所以加这2个不会掉下来)
+      实际高度 = height 
+
+      1. width/height  自适应会设100% => 达到全屏 (还要 父容器/body/html 设成100%)
+      2. padding 内填充 - 等分布局
+      3. margin 外间距 - margin的负值技巧：1.反向移动(类似等分布局1)  2.等高布局(正负抵消的效果，类似等高布局2)  3.圣杯/双飞翼
+      4. border 适应三角形
+   -->
+</body>
+</html>

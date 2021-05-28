@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  /* 文字环绕  - float + 左右结构 报纸 */
+  /* 这个布局适用于 不规则环绕 */
+  .box{
+    width: 500px;
+  }
+  .shape{
+    float: left;
+    width: 200px;
+    height: 300px;
+    background-color: currentColor;
+    /* 颜色 url -padding / -border   圆形 / ... */
+    shape-outside: url(birds.png);
+    -webkit-mask: url(brids.png) no-repeat;
+    mask: url(./birds.png) no-repeat;
+    color: darkgoldenrod;
+  }
+</style>
+<body>
+  <!-- 控制不规则的图片和文字之间的排列 -->
+  <div class="box">
+    <span class="shape"></span>
+  </div>
+</body>
+</html>

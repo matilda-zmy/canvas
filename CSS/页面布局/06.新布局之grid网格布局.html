@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .main{
+    /* 网格布局 */
+    /* 适用于：自适应导航 (定宽 + 自适应)  */
+    display: grid;
+    /* 控制元素的列宽 */
+    /* grid-template-columns: 100px 200px;  */
+    /* grid-template-columns: 100px auto 200px;  */
+    grid-template-columns: 100px 2fr 1fr;  /* 第一个占100px，剩下的另外2个，按比例平分 */
+    /* 控制元素的行宽  等价于下面那行代码*/
+    /* grid-template-rows: 300px 300px 300px; */  
+    grid-template-rows: repeat(3,300px);
+  }
+  .left{
+    background-color: purple;
+  }
+  .right{
+    background-color: seagreen;
+  }
+  .center{
+    background-color: tomato;
+  }
+</style>
+<body>
+  <div class="main">
+    <div class="left"></div>
+    <div class="center"></div>
+    <div class="right"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>两列布局2- float+margin(fix)</title>
+</head>
+<style>
+  *{margin: 0;padding: 0;}
+  /* float 浮动的层叠顺序 > 块级 */
+  /* 防止出现第一种子元素掉下来的情况
+  把自适应的元素外面包起来，给外面的元素添加浮动，类似ID-right-fix
+   */
+  #left{
+    width: 200px;
+    height: 400px;
+    background-color: dimgrey;
+    float: left;
+  }
+  /* 左定宽 + 右自适应 = calc(100% - 200px) 
+    1.flex:1
+    2.grid: auto
+    3.定位 +left/right/top/bottom 自动计算
+    ...
+  */
+  #right-fix{
+    width: calc(100% - 200px);
+    float: left;
+  }
+  #right{
+    height: 600px;
+    background-color: rebeccapurple;
+  }
+  
+  #inner{
+    width: 300px;
+    height: 300px;
+    background-color: salmon;
+    clear: both;
+  }
+</style>
+<body>
+  <!-- 左定宽 -->
+  <div id="left"></div>
+  <!-- 为自适应元素定位父级元素 -->
+  <div id="right-fix">
+    <div id="right">
+      <div id="inner"></div>
+    </div>
+  </div>
+
+  <div style="clear: both;"></div>
+</body>
+</html>

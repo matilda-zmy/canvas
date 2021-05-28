@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>两列布局6- Grid网格布局</title>
+</head>
+<style>
+  *{margin: 0;padding: 0;}
+  #parent{
+    display: grid;
+    grid-template-columns: 200px auto;
+    grid-template-rows: repeat(2,600px);
+  }
+  #left{
+    background-color: dimgrey;
+  }
+  #right{
+    background-color: rebeccapurple;
+  }
+</style>
+<body>
+  <div id="parent">
+    <div id="left"></div>
+    <div id="right">
+  </div>
+  </div>
+</body>
+</html>

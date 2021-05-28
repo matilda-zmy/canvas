@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>三列布局6- 绝对定位</title>
+</head>
+<style>
+ 
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  #parent,html,body{
+    height: 100%;
+  }
+  #left{
+    width: 200px;
+    background-color: saddlebrown;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+  }
+  #center{
+    width: 200px;
+    background-color: royalblue;
+    position: absolute;
+    left: 200px;
+    top: 0;
+    bottom: 0;
+  }
+  #right{
+    background-color: cadetblue;
+    position: absolute;
+    left: 400px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+ /* 左中 定宽   右自适应 */
+ #parent{
+   position: relative;
+ }
+
+</style>
+<body>
+  <div id="parent">
+    <div id="left"></div>
+    <div id="center"></div>
+    <div id="right"></div>
+  </div>
+</body>
+</html>

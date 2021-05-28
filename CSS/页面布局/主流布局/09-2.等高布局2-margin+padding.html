@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>等高布局2- margin+padding</title>
+</head>
+<style>
+  *{margin:0; padding:0;}
+  #left{background-color: lightblue;}
+  #right{background-color: mediumpurple;}
+  /* margin 负值技巧 margin-top/bottom/left/right: 负值 
+    padding：计算在实际的宽度里面
+    padding拉大，margin拉小
+
+    overflow:hidden;
+      1.清除浮动
+      2.溢出隐藏
+
+    这个是一个伪等高布局
+  */
+
+  /* 先浮动起来 */
+  #left,#right{
+    float: left;
+    width: 400px;
+    padding-bottom: 9999px;
+    margin-bottom: -9999px;
+  }
+  /* 父元素 溢出隐藏 */
+  #parent{
+    overflow: hidden;
+  }
+</style>
+<body>
+  <div id="parent">
+    <div id="left">Happiness</div>
+    <div id="right">Every day of your life, it is important to take the time to “smell the roses” — to appreciate the experiences that lead to happiness. This is part of being truly happy.
+
+      Happiness is a state of mind. It starts with accepting where you are, knowing where you are going and planning to enjoy every moment along the way. You know how to be happy, and feel that you have enough time or money or love or whatever you need to achieve your goals. And just feeling that you have enough of everything means that you do indeed have enough.</div>
+  </div>
+</body>
+</html>

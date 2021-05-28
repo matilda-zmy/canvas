@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实战</title>
+</head>
+<style>
+  *{margin: 0;padding: 0;}
+  li{
+    list-style: none;
+  }
+  .main{
+    margin: 0 auto;
+    width: 1220px;
+  }
+  .left{
+    width: 234px;
+    height: 614px;
+    background-color: sandybrown;
+    float: left;
+  }
+  .right{
+    background-color: royalblue;
+    /* height: 614px; */
+    overflow: hidden;
+  }
+  /* box-sizing: border-box;  包括 padding + border，不包括 margin */
+  .right li{
+    width: 25%;
+    height: 300px;
+    background-color: saddlebrown;
+
+    float: left;
+    border-left: 14px solid royalblue;
+    box-sizing: border-box;
+    margin-bottom: 14px;
+  }
+</style>
+<body>
+  <!-- 组件A -->
+  <div class="main">
+    <div class="left"></div>
+    <div class="right">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+  <!-- 组件B 复用组件A -->
+  <div class="main">
+    <div class="right">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

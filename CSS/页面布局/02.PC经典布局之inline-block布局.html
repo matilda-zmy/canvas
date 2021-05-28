@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inlin-block布局</title>
+</head>
+<style>
+  /* display: */
+  /* *{
+    margin: 0;
+    padding: 0;
+  }
+  .main{
+    font-size: 0;
+  }
+  .left{
+    display: inline-block;
+    width: 239px;
+    height: 400px;
+    font-size: 20px;
+    background-color: burlywood;
+  }
+  .right{
+    display: inline-block;
+    width: 992px;
+    height: 400px;
+    font-size: 20px;
+    background-color: blueviolet;
+  } */
+   
+
+   /* 项目使用的技巧：inline-block 对齐的属性 vertical-align:middle/top/bottom/px */
+   .icon{
+     display: inline-block; /* 让元素水平排列 */
+     vertical-align: -2px; /* 让图标和文字垂直对齐 */
+     width: 16px;
+     height: 16px;
+     background: url(https://misc.360buyimg.com/mtd/pc/index_2019/1.0.0/assets/sprite/tit_arrow/sprite.png) no-repeat;
+   }
+
+   .main{
+     width: 1080px;
+     margin: auto;
+     font-size: 0;
+   }
+   .main .item{
+     display: inline-block;
+     width: 33.3%;
+     height:100px;
+     font-size: 15px;
+     padding: 20px 0;
+   }
+   .item .icon1{
+     width: 25px;
+     height: 15px;
+     background: url(https://misc.360buyimg.com/mtd/pc/index_2019/1.0.0/assets/sprite/floor_hd/sprite.png) no-repeat;
+     background-size: contain;
+   }
+   .main .icon1,.main .text{
+     display: inline-block;
+     vertical-align: bottom;
+   }
+   .main .item:nth-child(1){
+     text-align: left;
+     background-color: blueviolet;
+   }
+   .main .item:nth-child(2){
+     text-align: center;
+     background-color: teal;
+   }
+   .main .item:nth-child(3){
+     text-align: right;
+     background-color: royalblue;
+   }
+</style>
+<body>
+  <!-- 最常见横向排列 -->
+  <!-- 
+    行内标签：是左右结构 / 设宽高不起作用 /自带属性-display:inline
+    块级标签：上下结构 / 可以设宽高 /自带属性-display:block
+    行内块元素：左右结构 + 可以设置宽高大小
+        *缺点：行(行内/行内块)特点：会受到我们标签换行符的影响产生默认的间距
+        *解决办法：给父容器添加 font-size:0; 去间距
+        *最大的问题：兼容性--display: inline-block不兼容IE低版本
+
+        *需求：图标 + 文字 (inline-block + vertical-align) => 垂直对齐
+              文本对齐(inline-block+ text-align) => 水平对齐
+
+              原理：IFC
+        font-size:0; 多个作用
+        - 去除inline-block 的间距
+        - 让文字隐藏消失(logo) - text-indent/font-size
+
+   -->
+
+
+
+   <!-- <div class="main">
+     <div class="left">111</div>
+     <div class="right">222</div>
+   </div> -->
+
+   <!-- 常用的场景 -->
+   <div class="icon"></div> 图标
+
+   <!-- 需求：三个模块 左/中/右 -->
+   <div class="main">
+     <div class="item">
+       <div class="icon1"></div>
+       <div class="text">政府</div>
+    </div>
+     <div class="item">
+       <div class="icon1"></div>
+       <div class="text">政府</div>
+    </div>
+     <div class="item">
+       <div class="icon1"></div>
+       <div class="text">政府</div>
+    </div>
+   </div>
+
+</body>
+</html>

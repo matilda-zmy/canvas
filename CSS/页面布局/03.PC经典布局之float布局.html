@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>float布局</title>
+</head>
+<style>
+  /* 同时设置左浮动，整体靠左
+            右浮动，整体靠右 => 此时顺序相反，此时可以调换html结构的顺序
+      display:block  有块元素的特点，但是是水平排列的
+   */
+  .main{font-size: 50px;color: red; border: 5px solid brown;}
+  .left{width: 236px;height: 300px;background-color: sienna;}
+  .right{width: 992px;height: 300px;background-color: royalblue;}
+  .left{float: left;}
+  .right{float: left;}
+  /* 方法4
+  .main::after{ 
+    content: "";
+    display: block;
+    clear: both;
+  } */
+
+  /* 清浮动的代码片段 minix 复用 rest.min.css*/
+  .clearfix::after{ 
+    content: "";
+    display: block;
+    clear: both;
+
+    /* 上面三个是必须要写的 如果写全就要加上下面代码--都是让元素看不见 */
+    font-size: 0;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+  /* 兼容低版本 */
+  .clearfix{
+    *zoom: 1;
+  }
+</style>
+<body>
+    <!--display:取值如下
+        table:一般用于单元表格，默认子容器横向排列、默认等分等高效果
+        inline-block：一般用来控制左右结构、有默认间距、兼容性不好
+        inline：行元素，无法设宽高、横向排列
+        block：块元素，可以设宽高、独占一行
+    -->
+    <!--float:水平布局  好处：让元素成一行显示，并且没有像inline-block布局一样受换行符的影响
+        float并没有真正的脱离文档流，还是占位的；
+        float:left/right/none(默认值，为了去掉继承过来的浮动) 
+        *问题：子元素浮动 => 导致父元素高度为 0 (高度塌陷) 
+        *原因：BFC (相邻的块元素，上下排列，如果出现了浮动，那父容器是不会把浮动元素的高度计算进去的)
+        *如何解决：清浮动
+          1) 添加 父容器高度：height = 内容的高度； 优点：属性设置简单  缺点：高度写死了  (不建议使用)
+          2)BFC (overflow:hidden)给父容器加这个属性  优点：属性设置简单  缺点：溢出隐藏(下拉框需求不适用)
+          3)clear:both;  (float的天敌clear)  优点：css专门用来清浮动的属性  缺点：添加很多无意义的空标签
+            - 块特定的元素 div
+            - 空内容
+            - clear:both
+          4) 利用伪元素::after (最常用)  方法3的优化  优点：复用  缺点：样式太多
+        浮动的原理：BFC
+
+
+        *浮动面试题：
+        - 1.让元素消失的方法(越多越好)？
+        display:none;  opacity:0;  height:0;width:0;  overflow:hidden;  visibility:hidden; font-size:0; 动画的transform; 
+        - 2.display:none;和opacity:0;和overflow:hidden; 和 visibility:hidden 区别？
+        display:none 元素不会出现也不会占文档流；
+        visibility:hidden和opacity:0 元素不会出现，但会占文档流；
+        visibility:hidden 只有元素超出才会隐藏；
+        - 3.display的取值？
+        table、inline-block、inline、block
+        - 4.元素的分类及相互转换？
+        块元素、行元素、行内元素；display属性转化
+        - 5.overflow:hidden多个作用？
+        清浮动 + 溢出隐藏 + 省略号
+        - 6.BFC原理
+
+     -->
+     <div class="main">
+        <div class="left">1</div>
+        <div class="right">2</div>
+        <!-- <div style="clear: both;"></div> -->
+     </div>
+     <ul>
+       <li>大大阿萨大大是</li>
+       <li>大大阿萨大大是</li>
+       <li>大大阿萨大大是</li>
+       <li>大大阿萨大大是</li>
+     </ul>
+</body>
+</html>

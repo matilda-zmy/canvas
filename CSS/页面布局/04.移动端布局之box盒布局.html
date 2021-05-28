@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #flexbox{
+    width: 500px;
+    height: 500px;
+    background-color: slategray;
+    /* 父容器盒模型-子元素横向排列  
+    兼容性: -webkit 谷歌; -moz 火狐; -ms IE
+    */
+    display: box;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+
+    /* 控制方向 */
+    -webkit-box-orient: vertical; /* 排列方向为垂直方向，默认是水平方向 */
+    -moz-box-orient: vertical;
+    box-orient: vertical;
+
+    /* 水平方向：居中/居左/居右 */
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    box-pack: center;
+
+    /* 垂直方向：：居中/居左/居右 */
+    box-align: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;  
+  }
+  p{
+    width: 100px;
+    height: 100px;
+  }
+  #flexbox p:nth-child(1){
+    background-color: thistle;
+  }
+  #flexbox p:nth-child(2){
+    background-color: tomato;
+  }
+  #flexbox p:nth-child(3){
+    background-color: purple;
+  }
+
+
+  /* 单行文本省略号 */
+  span{
+    display: block; /* 先转成块元素 */
+    width: 300px;
+    white-space: nowrap; /* 要换行 */
+    overflow: hidden; /* 超出隐藏 */
+    text-overflow: ellipsis; /* 超出部分省略号表示 */
+  }
+  /* 多行文本省略号 */
+  .txt{
+    width: 200px;
+    display: box; /* 先水平排列 */
+    display: -webkit-box;
+    -webkit-box-orient: vertical; /* 控制子元素方向 */
+    overflow: hidden;
+    -webkit-line-clamp: 2; /* 控制显示的行数 */
+
+    /* 有时会加 */
+    text-overflow: ellipsis; /* 不加也会显示，加上更完整 */
+    word-break: break-all; /* 把英文单词显示完整 */
+  }
+
+</style>
+<body>
+  <!-- box盒模型： 弹性盒模型的旧版本写法 -->
+  <div id="flexbox">
+    <p>child 1</p>
+    <p>child 2</p>
+    <p>child 3</p>
+  </div>
+  <!-- 应用场景：省略号 -->
+  <div class="pic"></div>
+  <div class="txt">box盒模型box盒模型box盒模型box盒模型box盒模型box盒模型box盒模型box盒模型box盒模型box盒模型box盒模型box盒模型box盒模型box盒模型box盒模型box盒模型box盒模型box盒模型</div>
+  <span>box盒模型box盒模型box盒模型box盒模型box盒模型box盒模型box盒模型box盒模型</span>
+  
+</body>
+</html>

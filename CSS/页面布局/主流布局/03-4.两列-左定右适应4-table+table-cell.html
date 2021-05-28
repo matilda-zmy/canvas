@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>两列布局4- table+table-cell</title>
+</head>
+<style>
+  *{margin: 0;padding: 0;}
+  #parent{
+    display: table;
+    width: 100%;
+  }
+  #left{
+    width: 200px;
+    height: 400px;
+    background-color: dimgrey;
+    display: table-cell;
+  }
+  #right{
+    height: 600px;
+    background-color: rebeccapurple;
+    display: table-cell;
+  }
+</style>
+<body>
+  <div id="parent">
+    <div id="left"></div>
+    <div id="right">
+  </div>
+  </div>
+</body>
+</html>
